@@ -17,7 +17,7 @@ class IsOnlineWidget extends StatelessWidget {
             padding: const EdgeInsets.only(right: 8.0),
             child: Text(
               'Online',
-              style: TextStyle(color: Colors.greenAccent),
+              style: TextStyle(color: Colors.amber),
             ),
           ));
         else

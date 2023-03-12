@@ -18,7 +18,7 @@ class DeviceData {
 
   factory DeviceData.fromMap(Map data) {
     return DeviceData(
-      gsr: data['alch'] ?? 0,
+      gsr: data['gsr'] ?? 0,
       heartRate: data['hrt_rate'] ?? 0,
       spo2: data['sp02'] ?? 0,
       temp: data['temperature'] != null

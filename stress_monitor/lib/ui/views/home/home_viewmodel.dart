@@ -18,6 +18,9 @@ class HomeViewModel extends ReactiveViewModel {
 
   DeviceData? get data => _dbService.node;
 
+  bool _isStress = false;
+  bool get isStress => _isStress;
+
   @override
   List<DbService> get reactiveServices => [_dbService];
 
@@ -37,7 +40,20 @@ class HomeViewModel extends ReactiveViewModel {
         Timer.periodic(const Duration(milliseconds: 1000), _updateDataSource);
   }
 
+  void setStress() {
+    _isStress = !_isStress;
+    notifyListeners();
+  }
+
+  void calStress() {
+    if (data != null && data!.gsr > 600 && data!.heartRate > 76) {
+      _isStress = true;
+      notifyListeners();
+    }
+  }
+
   void _updateDataSource(Timer timer) {
+    calStress();
     chartData!.add(ChartData(count, data?.heartRate ?? 0));
     if (chartData!.length == 20) {
       chartData!.removeAt(0);

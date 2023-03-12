@@ -55,7 +55,7 @@ class _HomeBody extends ViewModelWidget<HomeViewModel> {
               ),
               Column(
                 children: [
-                  _Spo2Ind(value: model.data!.spo2),
+                  // _Spo2Ind(value: model.data!.spo2),
                   _HeartRateInd(value: model.data!.heartRate)
                 ],
               ),
@@ -63,14 +63,51 @@ class _HomeBody extends ViewModelWidget<HomeViewModel> {
             ],
           ),
         ),
-        if (!model.data!.isFinger) Positioned.fill(child: NoFinger())
+        if (model.isStress)
+          Positioned.fill(
+              child: LottieShow(
+            link: 'https://assets9.lottiefiles.com/packages/lf20_YH7zo3.json',
+            text: 'Stressfull!',
+          )),
+        if (model.isStress)
+          Positioned(
+              bottom: 40,
+              left: 0,
+              right: 0,
+              child: TextButton(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Text("Reset"),
+                  ),
+                ),
+                onPressed: model.setStress,
+              ))
+        else if (!model.data!.isFinger)
+          Positioned.fill(
+              child: LottieShow(
+            link:
+                'https://assets8.lottiefiles.com/packages/lf20_ls4tnvo4/finger/data.json',
+            text: 'Place your finger',
+          ))
+        else if (model.data!.gsr < 30)
+          Positioned.fill(
+              child: LottieShow(
+            link: 'https://assets3.lottiefiles.com/packages/lf20_qf6zku4z.json',
+            text: 'Connect GSR cables',
+          ))
       ],
     );
   }
 }
 
-class NoFinger extends StatelessWidget {
-  const NoFinger({super.key});
+class LottieShow extends StatelessWidget {
+  final String link;
+  final String text;
+  const LottieShow({super.key, required this.link, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -81,18 +118,17 @@ class NoFinger extends StatelessWidget {
           elevation: 10,
           color: Colors.black.withOpacity(0.5),
           child: Container(
-            height: 250,
-            width: 200,
+            // height: 250,
+            // width: 200,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Lottie.network(
-                      'https://assets8.lottiefiles.com/packages/lf20_ls4tnvo4/finger/data.json'),
+                  Lottie.network(link),
                   SizedBox(height: 20),
                   Text(
-                    'Place your finger',
+                    text,
                     style: TextStyle(fontSize: 15, color: Colors.white),
                   ),
                 ],
