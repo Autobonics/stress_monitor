@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "10706715734",
+    "firebase_url": "https://health-monitor-18283-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "health-monitor-18283",
+    "storage_bucket": "health-monitor-18283.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10706715734:android:59ec0a1a691c922b7667f7",
+        "android_client_info": {
+          "package_name": "com.autobonics.stress_monitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10706715734-4dsa6e81b4mi7osvl8f4rkmj2107pipl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeWDBXkESI5IcJq8ZZRN-7KHGs_QSxX18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10706715734-4dsa6e81b4mi7osvl8f4rkmj2107pipl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
